@@ -121,7 +121,7 @@ class ExpressionTests: XCTestCase {
 		let divide = spaced(Word("/")) ^> Operator.divide
 		let equality = spaced(Word("==")) ^> Operator.equality
 		let conjunction = spaced(Word("&&")) ^> Operator.conjunction
-		let number = Standart.natural.map { ExpressionAST.number($0) }
+		let number = Standard.natural.map { ExpressionAST.number($0) }
 		let term = number <|> Between(leading: leftBracket, trailing: rightBracket, Lazy(self.expression))
 		return Expression(
 			term,

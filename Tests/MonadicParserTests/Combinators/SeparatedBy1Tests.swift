@@ -11,7 +11,7 @@ import XCTest
 
 class SeparatedBy1Tests: XCTestCase {
 	func testSuccess() {
-		let term = Standart.natural
+		let term = Standard.natural
 		let spaces = Many(Symbol(" "))
 		let op = Some(Choice(Symbol("+"), Symbol("-"), Symbol("*"), Symbol("/")))
 		let separator = Between(leading: spaces, trailing: spaces, op).map { String($0) }
@@ -27,7 +27,7 @@ class SeparatedBy1Tests: XCTestCase {
 	}
 
 	func testSuccessWithRest1() {
-		let term = Standart.natural
+		let term = Standard.natural
 		let spaces = Many(Symbol(" "))
 		let op = Some(Choice(Symbol("+"), Symbol("-"), Symbol("*"), Symbol("/")))
 		let separator = Between(leading: spaces, trailing: spaces, op).map { String($0) }
@@ -46,7 +46,7 @@ class SeparatedBy1Tests: XCTestCase {
 	}
 
 	func testFaulure2() {
-		let term = Standart.natural
+		let term = Standard.natural
 		let spaces = Many(Symbol(" "))
 		let op = Some(Choice(Symbol("+"), Symbol("-"), Symbol("*"), Symbol("/")))
 		let separator = Between(leading: spaces, trailing: spaces, op).map { String($0) }

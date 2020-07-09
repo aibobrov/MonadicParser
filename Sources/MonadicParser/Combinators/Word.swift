@@ -43,3 +43,9 @@ public struct Word<Result: StringProtocol>: Combinator {
 		)
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+func word<Result: StringProtocol>(_ string: Result) -> some Combinator {
+	return Word(string)
+}

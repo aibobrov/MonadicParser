@@ -21,3 +21,9 @@ public struct Pure<Result>: Combinator {
 		return .success(stream: stream, error: nil, result: value)
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func pure<Result>(_ value: Result) -> some Combinator {
+	return Pure(value)
+}

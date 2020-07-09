@@ -27,3 +27,9 @@ public struct Satisfy: Combinator {
 		return .failure(error: .predicateFailure(on: input.position))
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+func satisfy(predicate: @escaping Satisfy.Predicate) -> some Combinator {
+	return Satisfy(predicate: predicate)
+}

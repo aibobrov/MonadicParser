@@ -18,3 +18,9 @@ public struct Element: Parser {
 		parser = Satisfy(predicate: { _ in true })
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func element() -> some Combinator {
+	return Element()
+}

@@ -12,8 +12,12 @@ public final class Lazy<C: Combinator>: Combinator {
 
 	private var factory: () -> C
 
-	public init(_ factory: @autoclosure @escaping () -> C) {
+	public init(_ factory: @escaping () -> C) {
 		self.factory = factory
+	}
+
+	public convenience init(_ factory: @autoclosure @escaping () -> C) {
+		self.init(factory)
 	}
 
 	public
@@ -24,4 +28,16 @@ public final class Lazy<C: Combinator>: Combinator {
 		}()
 		return try factory().parse(input)
 	}
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func lazy<C: Combinator>(_ factory: @autoclosure @escaping () -> C) -> some Combinator {
+	return Lazy(factory)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func lazy<C: Combinator>(_ factory: @escaping () -> C) -> some Combinator {
+	return Lazy(factory)
 }

@@ -58,3 +58,11 @@ private extension SeparatedBy1 {
 }
 
 extension SeparatedBy1.Separated: Equatable where Term.Result: Equatable, Separator.Result: Equatable {}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func separatedBy1<Term: Combinator, Separator: Combinator>(
+	_ term: Term, _ separator: Separator
+) -> some Combinator {
+	return SeparatedBy1(term, separator)
+}

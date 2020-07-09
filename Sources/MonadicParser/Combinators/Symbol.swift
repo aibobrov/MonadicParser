@@ -20,3 +20,9 @@ public struct Symbol: Parser {
 		}
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+func symbol(_ character: Character) -> some Combinator {
+	return Symbol(character)
+}

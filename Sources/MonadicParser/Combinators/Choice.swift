@@ -26,3 +26,15 @@ public struct Choice<P: Combinator>: Parser {
 		self.init(combinators)
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func choice<C: Collection>(_ combinators: C) -> some Combinator where C.Element: Combinator {
+	return Choice(combinators)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func choice<P: Combinator>(_ combinators: P...) -> some Combinator {
+	return Choice(combinators)
+}

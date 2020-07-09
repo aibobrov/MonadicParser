@@ -19,3 +19,11 @@ public struct Between<Leading: Combinator, Trailing: Combinator, C: Combinator>:
 		parser = leading *> content <* trailing
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func between<Leading: Combinator, Trailing: Combinator, C: Combinator>(
+	leading: Leading, trailing: Trailing, _ content: C
+) -> some Combinator {
+	return Between(leading: leading, trailing: trailing, content)
+}

@@ -28,7 +28,7 @@ private indirect enum ExpressionAST: Equatable, CustomDebugStringConvertible {
 private func buildString(_ expression: ExpressionAST, level: Int = 0) -> String {
 	var string = ""
 	if level > 0 {
-		string += Array(repeating: "| ", count: level - 1).joined() + "|_"
+		string += String(repeating: "| ", count: level - 1) + "|_"
 	}
 	switch expression {
 		case let .plus(lhs, rhs):

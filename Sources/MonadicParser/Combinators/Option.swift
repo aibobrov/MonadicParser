@@ -36,3 +36,9 @@ public struct Option<C: Combinator>: Combinator {
 public func ?? <C: Combinator>(_ combinator: C, _ `default`: C.Result) -> Option<C> {
 	return Option(`default`, combinator)
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func option<C: Combinator>(_ combinator: C, `default`: C.Result) -> some Combinator {
+	return Option(`default`, combinator)
+}

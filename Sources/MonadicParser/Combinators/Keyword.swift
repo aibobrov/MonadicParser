@@ -63,3 +63,15 @@ public struct Keyword: Combinator {
 		)
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func keyword(_ dictionary: [Keyword.Result]) -> some Combinator {
+	return Keyword(dictionary)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func keyword(_ dictionary: Keyword.Result...) -> some Combinator {
+	return Keyword(dictionary)
+}

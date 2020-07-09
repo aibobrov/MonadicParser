@@ -165,3 +165,47 @@ public extension SeparatedBy1.Separated {
 		return result
 	}
 }
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func expression<Term: Combinator, Operator: Combinator, AST, C: Collection>(
+	_ term: Term,
+	_ unary: @escaping Expression<Term, Operator, AST>.UnaryBuilder,
+	_ binary: @escaping Expression<Term, Operator, AST>.BinaryBuilder,
+	_ operators: C
+) -> some Combinator where C.Element == Operation<Operator> {
+	return Expression(term, unary, binary, operators)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func expression<Term: Combinator, Operator: Combinator, AST, C: Collection>(
+	_ term: Term,
+	_ unary: @escaping Expression<Term, Operator, AST>.UnaryBuilder,
+	_ binary: @escaping Expression<Term, Operator, AST>.BinaryBuilder,
+	_ operators: C
+) -> some Combinator where C.Element == (Operator, OperatorType) {
+	return Expression(term, unary, binary, operators)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func expression<Term: Combinator, Operator: Combinator, AST, C: Collection>(
+	_ term: Term,
+	_ unary: @escaping Expression<Term, Operator, AST>.UnaryBuilder,
+	_ binary: @escaping Expression<Term, Operator, AST>.BinaryBuilder,
+	_ operators: Operation<Operator>...
+) -> some Combinator {
+	return Expression(term, unary, binary, operators)
+}
+
+@available(OSX 10.15.0, *)
+@inline(__always)
+public func expression<Term: Combinator, Operator: Combinator, AST, C: Collection>(
+	_ term: Term,
+	_ unary: @escaping Expression<Term, Operator, AST>.UnaryBuilder,
+	_ binary: @escaping Expression<Term, Operator, AST>.BinaryBuilder,
+	_ operators: (Operator, OperatorType)...
+) -> some Combinator {
+	return Expression(term, unary, binary, operators)
+}

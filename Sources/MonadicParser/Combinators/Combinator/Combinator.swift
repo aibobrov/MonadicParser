@@ -25,7 +25,7 @@ public extension Combinator {
 	}
 
 	@inline(__always)
-	func callAsFunction(_ stream: String) throws -> ParseResult<String.SubSequence, Result> {
+	func callAsFunction<Stream: StringProtocol>(_ stream: Stream) throws -> ParseResult<Stream.SubSequence, Result> {
 		let input = ParseInput(stream: stream, position: .initial)
 		return try callAsFunction(input)
 	}

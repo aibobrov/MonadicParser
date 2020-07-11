@@ -16,6 +16,7 @@ precedencegroup ConcatPrecedence {
 infix operator ++: ConcatPrecedence
 
 /// Box concatination helpers
+/// Can be removed whenever variadic generics is implemented in Swift
 @inline(__always)
 public func boxed<L: Boxed, R: Boxed>(
 	_ lhs: L, _ rhs: R

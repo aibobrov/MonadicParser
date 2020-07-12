@@ -11,23 +11,23 @@ import Foundation
 public struct ParseError: Error {
 	public let position: Position
 
-	public let errors: [Error]
+	public let error: Error
 
 	@inlinable
-	public init(position: Position, errors: [Error]) {
+	public init(position: Position, error: Error) {
 		self.position = position
-		self.errors = errors
+		self.error = error
 	}
 }
 
 public extension ParseError {
 	func with(_ position: Position) -> Self {
-		return ParseError(position: position, errors: errors)
+		return ParseError(position: position, error: error)
 	}
 }
 
 extension ParseError: Equatable {
 	public static func == (lhs: ParseError, rhs: ParseError) -> Bool {
-		return lhs.position == rhs.position && lhs.errors.count == rhs.errors.count
+		return lhs.position == rhs.position
 	}
 }

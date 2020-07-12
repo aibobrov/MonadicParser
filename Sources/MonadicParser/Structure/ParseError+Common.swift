@@ -19,24 +19,24 @@ public extension ParseError {
 	/// Function-factory for `undefined` parsing error
 	@inline(__always)
 	static func undefined(on position: Position = .initial) -> ParseError {
-		return ParseError(position: position, errors: [Common.undefined])
+		return ParseError(position: position, error: Common.undefined)
 	}
 
 	/// Function-factory for `predicateFailure` parsing error
 	@inline(__always)
 	static func predicateFailure(on position: Position = .initial) -> ParseError {
-		return ParseError(position: position, errors: [Common.predicateFailure])
+		return ParseError(position: position, error: Common.predicateFailure)
 	}
 
 	/// Function-factory for `custom` parsing error
 	@inline(__always)
 	static func custom(on position: Position = .initial, _ description: String) -> ParseError {
-		return ParseError(position: position, errors: [Common.custom(description)])
+		return ParseError(position: position, error: Common.custom(description))
 	}
 
 	/// Function-factory for `keywordNotFound` parsing error
 	@inline(__always)
 	static func keywordNotFound(on position: Position = .initial) -> ParseError {
-		return ParseError(position: position, errors: [Common.keywordNotFound])
+		return ParseError(position: position, error: Common.keywordNotFound)
 	}
  }

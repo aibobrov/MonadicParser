@@ -29,7 +29,7 @@ public extension ParseError {
 	/// Strategy: Keep the latest error
 	private static func mergeNonNil(_ lhs: ParseError, _ rhs: ParseError) -> ParseError {
 		if lhs.position == rhs.position {
-			return ParseError(position: lhs.position, errors: lhs.errors + rhs.errors)
+			return ParseError(position: lhs.position, error: rhs.error)
 		} else if lhs.position < rhs.position {
 			return rhs
 		} else { // lhs.position > rhs.position

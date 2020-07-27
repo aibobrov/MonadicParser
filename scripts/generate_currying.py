@@ -16,16 +16,31 @@ HEADER: str = '''//
 
 // swiftlint:disable all
 
-/// Generated curry functions up to {arg_number} parameters. 
+/// Generated curry functions up to {arg_number} parameters.
 '''
 
 
+assert RETURN_TYPE not in VARIABLES, 'Should not be type name clashes'
+
+
 def generate_parser():
-    arg_parser = argparse.ArgumentParser(description='Generate curry boilerplate')
-    arg_parser.add_argument('--file_path', '-f', type=str, help='Output file path')
-    arg_parser.add_argument('--project', '-p', type=str, nargs='?', default='MonadicParser')
-    arg_parser.add_argument('--author', '-a', type=str, nargs='?', default='Artem Bobrov')
-    return arg_parser
+    parser = argparse.ArgumentParser(description='Generate curry boilerplate')
+    parser.add_argument(
+        '--file_path', '-f',
+        type=str,
+        help='Output file path'
+    )
+    parser.add_argument(
+        '--project', '-p',
+        type=str, nargs='?',
+        default='MonadicParser'
+    )
+    parser.add_argument(
+        '--author', '-a',
+        type=str, nargs='?',
+        default='Artem Bobrov'
+    )
+    return parser
 
 
 def get_datetime_str() -> str:
@@ -41,7 +56,7 @@ def curry_function(type_params: list, return_type: str, body: str) -> str:
 public func curry<{type_args}, {return_type}>(_ f: @escaping ({type_args}) -> {return_type}) -> {return_type_args} -> {return_type} {{
     return {body}
 }}
-'''
+'''  # noqa: E501
 
 
 def generate_function_body(variables: list, index=0) -> str:
@@ -70,7 +85,14 @@ def generate_file(file_path: str, header: str) -> str:
 
 
 def generate_header(project_name: str, file_name: str, author: str) -> str:
-    return HEADER.format(file=file_name, project=project_name, script=sys.argv[0], date=get_datetime_str(), arg_number=len(VARIABLES), author=author)
+    return HEADER.format(
+        file=file_name,
+        project=project_name,
+        script=sys.argv[0],
+        date=get_datetime_str(),
+        arg_number=len(VARIABLES),
+        author=author
+    )
 
 
 if __name__ == "__main__":

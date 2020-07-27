@@ -3,6 +3,7 @@
 
 
 import XCTest
+@testable import MonadicParserTests
 
 extension BetweenTests {
   static var allTests: [(String, (BetweenTests) -> () throws -> Void)] = [
@@ -100,13 +101,15 @@ extension SeparatedBy1Tests {
     ("testFaulure2", testFaulure2)
   ]
 }
-extension StandartTests {
-  static var allTests: [(String, (StandartTests) -> () throws -> Void)] = [
+extension StandardTests {
+  static var allTests: [(String, (StandardTests) -> () throws -> Void)] = [
     ("testDigitSuccess", testDigitSuccess),
     ("testDigitSuccess2", testDigitSuccess2),
     ("testDigitFailure", testDigitFailure),
     ("testWordsSuccess1", testWordsSuccess1),
-    ("testWordsSuccess2", testWordsSuccess2)
+    ("testWordsSuccess2", testWordsSuccess2),
+    ("testAlphabetical", testAlphabetical),
+    ("testIdentifier", testIdentifier)
   ]
 }
 extension SymbolTests {
@@ -154,7 +157,7 @@ XCTMain([
   testCase(PureTests.allTests),
   testCase(SatisfyTests.allTests),
   testCase(SeparatedBy1Tests.allTests),
-  testCase(StandartTests.allTests),
+  testCase(StandardTests.allTests),
   testCase(SymbolTests.allTests),
   testCase(TrieTests.allTests),
   testCase(VoidTests.allTests),

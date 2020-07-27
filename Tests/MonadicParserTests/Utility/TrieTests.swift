@@ -20,7 +20,7 @@ private extension String {
 }
 
 final class TrieTests: XCTestCase {
-	private static let STRESS_TEST_SIZE = 1000
+	private static let STRESS_TEST_SIZE = 100_000
 
     func testSimple() throws {
 		let trie = Trie("her", "his", "them", "wow", "attack")

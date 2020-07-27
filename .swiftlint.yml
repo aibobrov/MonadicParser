@@ -1,0 +1,15 @@
+switch_case_alignment:
+    indented_cases: true
+    
+disabled_rules:
+  - nesting
+  - identifier_name
+
+excluded:
+  - Tests
+  - Example
+
+force_cast:
+  severity: warning
+force_try:
+  severity: warning

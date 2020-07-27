@@ -1,0 +1,3 @@
+import MonadicParser
+
+TruthTableGenerator.main()

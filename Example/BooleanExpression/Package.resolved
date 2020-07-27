@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MonadicParser",
+        "repositoryURL": "/Users/artembobrov/Documents/Personal-Works/Swift/MonadicParser",
+        "state": {
+          "branch": "develop",
+          "revision": "cf89d8199cabd2cfac0fb6bb651d323977431bc5",
+          "version": null
+        }
+      },
+      {
+        "package": "swift-argument-parser",
+        "repositoryURL": "https://github.com/apple/swift-argument-parser",
+        "state": {
+          "branch": "master",
+          "revision": "e77b025008731be24d7f46e575def4027ab3a07e",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
